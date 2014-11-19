@@ -583,6 +583,18 @@ module Grit
       Commit.diff(self, commit)
     end
 
+    def archive_tar(treeish = 'master', prefix = nil)
+      options = {}
+      options[:prefix] = prefix if prefix
+      self.git.archive(options, treeish)
+    end
+
+    def archive_tar_gz(treeish = 'master', prefix = nil)
+      options = {}
+      options[:prefix] = prefix if prefix
+      self.git.archive(options, treeish)
+    end
+
     # Write an archive directly to a file
     #   +treeish+ is the treeish name/id (default 'master')
     #   +prefix+ is the optional prefix (default nil)
